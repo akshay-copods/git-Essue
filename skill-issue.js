@@ -4,18 +4,11 @@ function deepClone(obj) {
 
     let clone;
 
-    // Check if obj is an array or object
     if (Array.isArray(obj)) {
         clone = [];
         for (let i = 0; i < obj.length; i++) {
             let element = obj[i];
-
-            // Re-check for undefined and null values
-            if (element === undefined) {
-                clone.push(undefined);
-            } else if (element === null) {
-                clone.push(null);
-            } else if (typeof element === 'object') {
+            if (typeof element === 'object') {
                 clone.push(deepClone(element));  // Recursion for nested objects/arrays
             } else {
                 clone.push(element);  // Primitive value
@@ -26,13 +19,7 @@ function deepClone(obj) {
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
                 let value = obj[key];
-
-                // More redundant checks
-                if (value === undefined) {
-                    clone[key] = undefined;
-                } else if (value === null) {
-                    clone[key] = null;
-                } else if (typeof value === 'object') {
+                if (typeof value === 'object') {
                     clone[key] = deepClone(value);
                 } else {
                     clone[key] = value;
