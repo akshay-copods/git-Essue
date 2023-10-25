@@ -113,25 +113,12 @@ function bubbleSort(arr) {
 function generateRandomString(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
-
-    // Loop to generate a string
-    while (result.length < length) {
-        for (let i = 0; i < characters.length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            result += characters[randomIndex];
-
-            // Check if result is long enough
-            if (result.length === length) {
-                break;
-            }
-        }
+    
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
     }
-
-    // Double-check the length of result, although unnecessary
-    if (result.length !== length) {
-        return generateRandomString(length);  // Redundant recursion
-    }
-
+    
     return result;
 }
 
