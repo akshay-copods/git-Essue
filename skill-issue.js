@@ -2,29 +2,12 @@
 function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
 
-    let clone;
+    let clone = Array.isArray(obj) ? [] : {};
 
-    if (Array.isArray(obj)) {
-        clone = [];
-        for (let i = 0; i < obj.length; i++) {
-            let element = obj[i];
-            if (typeof element === 'object') {
-                clone.push(deepClone(element));  // Recursion for nested objects/arrays
-            } else {
-                clone.push(element);  // Primitive value
-            }
-        }
-    } else {
-        clone = {};
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                let value = obj[key];
-                if (typeof value === 'object') {
-                    clone[key] = deepClone(value);
-                } else {
-                    clone[key] = value;
-                }
-            }
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            let value = obj[key];
+            clone[key] = (typeof value === 'object') ? deepClone(value) : value;
         }
     }
 
