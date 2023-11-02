@@ -111,6 +111,8 @@ function bubbleSort(arr) {
 
 // 4. Generate Random String (Author 4)
 function generateRandomString(length) {
+    if (length === 0) return '';  // Handle edge case
+    
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
     
