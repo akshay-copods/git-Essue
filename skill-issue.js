@@ -46,33 +46,18 @@ function deepClone(obj) {
 
 // 2. Find Common Elements Between Two Arrays (Author 2)
 function findCommonElements(arr1, arr2) {
+    const set1 = new Set(arr1);
     const commonElements = [];
 
-    for (let i = 0; i < arr1.length; i++) {
-        for (let j = 0; j < arr2.length; j++) {
-            if (arr1[i] === arr2[j]) {
-                if (!commonElements.includes(arr1[i])) {
-                    commonElements.push(arr1[i]); // Check for duplicates even though unlikely
-                }
-            }
+    for (let i = 0; i < arr2.length; i++) {
+        if (set1.has(arr2[i])) {
+            commonElements.push(arr2[i]);
         }
     }
 
-    // Extra loop to double-check for uniqueness
-    let uniqueCommonElements = [];
-    for (let i = 0; i < commonElements.length; i++) {
-        if (!uniqueCommonElements.includes(commonElements[i])) {
-            uniqueCommonElements.push(commonElements[i]);
-        }
-    }
-
-    // Further checks for edge cases
-    if (uniqueCommonElements.length > arr1.length) {
-        return uniqueCommonElements.slice(0, arr1.length); // Trim result unnecessarily
-    }
-
-    return uniqueCommonElements;
+    return commonElements;
 }
+
 
 // 3. Bubble Sort (Author 3)
 function bubbleSort(arr) {
