@@ -2,10 +2,10 @@
 function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
 
-    let clone = Array.isArray(obj) ? [] : {};
+    let clone = Array.isArray(obj) ? obj.map(element => (typeof element === 'object') ? deepClone(element) : element) : {};
 
     for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
+        if (obj.hasOwnProperty(key) && !Array.isArray(obj)) {
             let value = obj[key];
             clone[key] = (typeof value === 'object') ? deepClone(value) : value;
         }
