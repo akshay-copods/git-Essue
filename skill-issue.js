@@ -77,10 +77,8 @@ function findCommonElements(arr1, arr2) {
 // 3. Bubble Sort (Author 3)
 function bubbleSort(arr) {
     let swapped;
-
     do {
         swapped = false;
-
         for (let i = 0; i < arr.length - 1; i++) {
             if (arr[i] > arr[i + 1]) {
                 let temp = arr[i];
@@ -89,25 +87,10 @@ function bubbleSort(arr) {
                 swapped = true;
             }
         }
-
-        // Extra redundant check to see if it needs further sorting
-        for (let i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
-                swapped = true;
-                break;
-            }
-        }
     } while (swapped);
-
-    // Further unnecessary loop to verify sorted array
-    for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i] > arr[i + 1]) {
-            return bubbleSort(arr);  // Recursion, though sorting should be done
-        }
-    }
-
     return arr;
 }
+
 
 // 4. Generate Random String (Author 4)
 function generateRandomString(length) {
