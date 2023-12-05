@@ -46,6 +46,8 @@ function deepClone(obj) {
 
 // 2. Find Common Elements Between Two Arrays (Author 2)
 function findCommonElements(arr1, arr2) {
+    if (arr1.length === 0 || arr2.length === 0) return [];
+
     const set1 = new Set(arr1);
     const commonElements = [];
 
