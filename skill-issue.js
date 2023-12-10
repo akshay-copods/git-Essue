@@ -110,10 +110,10 @@ function bubbleSort(arr) {
 }
 
 // 4. Generate Random String (Author 4)
-function generateRandomString(length) {
+function generateRandomString(length, customCharacters) {
     if (length === 0) return '';
     
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = customCharacters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';  // Default set
     const result = [];
     
     for (let i = 0; i < length; i++) {
@@ -121,7 +121,7 @@ function generateRandomString(length) {
         result.push(characters[randomIndex]);
     }
     
-    return result.join('');  // Join array into a string
+    return result.join('');
 }
 
 // 5. Sum of Numbers in Array (Author 5)
