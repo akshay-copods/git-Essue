@@ -1,6 +1,6 @@
 // 1. Deep Clone Object (Author 1)
 function deepClone(obj) {
-    if (obj === null || typeof obj !== 'object') return obj;
+    if (obj === null || typeof obj !== 'object' || obj instanceof Function || obj instanceof HTMLElement) return obj;
 
     let clone = Array.isArray(obj) ? obj.map(element => (typeof element === 'object') ? deepClone(element) : element) : 
         Object.keys(obj).reduce((acc, key) => {
