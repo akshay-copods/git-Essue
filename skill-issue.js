@@ -81,16 +81,15 @@ function bubbleSort(arr) {
         swapped = false;
         for (let j = 0; j < arr.length - 1 - i; j++) {
             if (arr[j] > arr[j + 1]) {
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];  // Simplified swap logic
                 swapped = true;
             }
         }
-        if (!swapped) break;  // Early exit if no swaps were made in the current pass
+        if (!swapped) break;
     }
     return arr;
 }
+
 
 
 // 4. Generate Random String (Author 4)
