@@ -75,13 +75,13 @@ function findCommonElements(arr1, arr2) {
 }
 
 // 3. Bubble Sort (Author 3)
-function bubbleSort(arr) {
+function bubbleSort(arr, comparator = (a, b) => a - b) {
     let swapped;
     for (let i = 0; i < arr.length; i++) {
         swapped = false;
         for (let j = 0; j < arr.length - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];  // Simplified swap logic
+            if (comparator(arr[j], arr[j + 1]) > 0) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                 swapped = true;
             }
         }
