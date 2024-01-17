@@ -111,11 +111,13 @@ function bubbleSort(arr) {
 
 // 4. Generate Random String (Author 4)
 function generateRandomString(length, customCharacters) {
+    if (typeof length !== 'number' || length < 0) throw new Error('Invalid length');  // Validate length
     if (length === 0) return '';
     
-    const characters = customCharacters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';  // Default set
-    const result = [];
+    const characters = customCharacters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    if (characters.length === 0) throw new Error('Character set cannot be empty');  // Validate character set
     
+    const result = [];
     for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result.push(characters[randomIndex]);
