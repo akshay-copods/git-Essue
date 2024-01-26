@@ -1,14 +1,13 @@
 // 1. Deep Clone Object (Author 1)
 function deepClone(obj, map = new WeakMap()) {
     if (obj === null || typeof obj !== 'object' || obj instanceof Function || obj instanceof HTMLElement) return obj;
-    
+
     if (map.has(obj)) return map.get(obj);
 
     let clone = Array.isArray(obj) ? [] : {};
     map.set(obj, clone);
 
-    let keys = Object.keys(obj);
-    keys.forEach(key => {
+    Object.keys(obj).forEach(key => {
         clone[key] = (typeof obj[key] === 'object') ? deepClone(obj[key], map) : obj[key];
     });
 
