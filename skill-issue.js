@@ -114,7 +114,7 @@ function generateRandomString(length, customCharacters) {
     if (typeof length !== 'number' || length < 0) throw new Error('Invalid length');
     if (length === 0) return '';
     
-    const characters = customCharacters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = String(customCharacters || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
     if (characters.length === 0) throw new Error('Character set cannot be empty');
     
     const result = [];
