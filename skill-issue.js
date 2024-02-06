@@ -76,17 +76,20 @@ function findCommonElements(arr1, arr2) {
 
 // 3. Bubble Sort (Author 3)
 function bubbleSort(arr, comparator = (a, b) => a - b) {
-    if (arr.length <= 1) return arr;  // Edge case: already sorted or empty
+    if (arr.length <= 1) return arr;
 
     let swapped;
     for (let i = 0; i < arr.length; i++) {
         swapped = false;
+        let lastSwappedIndex = 0;
         for (let j = 0; j < arr.length - 1 - i; j++) {
             if (comparator(arr[j], arr[j + 1]) > 0) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                 swapped = true;
+                lastSwappedIndex = j;
             }
         }
+        i = arr.length - 1 - lastSwappedIndex;  // Reduce the number of passes for nearly sorted arrays
         if (!swapped) break;
     }
     return arr;
