@@ -57,7 +57,7 @@ function findCommonElements(arr1, arr2) {
         }
     }
 
-    return commonElements;
+    return [...new Set(commonElements)];
 }
 
 
