@@ -48,12 +48,21 @@ function deepClone(obj) {
 function findCommonElements(arr1, arr2) {
     if (arr1.length === 0 || arr2.length === 0) return [];
 
-    const set1 = new Set(arr1);
+    let shorterArray, longerArray;
+    if (arr1.length <= arr2.length) {
+        shorterArray = arr1;
+        longerArray = arr2;
+    } else {
+        shorterArray = arr2;
+        longerArray = arr1;
+    }
+
+    const setShorter = new Set(shorterArray);
     const commonElements = [];
 
-    for (let i = 0; i < arr2.length; i++) {
-        if (set1.has(arr2[i])) {
-            commonElements.push(arr2[i]);
+    for (let i = 0; i < longerArray.length; i++) {
+        if (setShorter.has(longerArray[i])) {
+            commonElements.push(longerArray[i]);
         }
     }
 
