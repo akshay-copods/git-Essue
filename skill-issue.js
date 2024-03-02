@@ -118,14 +118,14 @@ function generateRandomString(length, customCharacters) {
     if (characters.length === 0) throw new Error('Character set cannot be empty');
     
     const result = [];
-    const charLength = characters.length;  // Cache character set length
+    const charSetLength = characters.length;  // Cached character set length for efficiency
     
     for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * charLength);
+        const randomIndex = Math.floor(Math.random() * charSetLength);
         result.push(characters[randomIndex]);
     }
     
-    return result.join('');
+    return result.join('');  // Join array elements into final string
 }
 
 // 5. Sum of Numbers in Array (Author 5)
