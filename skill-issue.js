@@ -48,26 +48,14 @@ function deepClone(obj) {
 function findCommonElements(arr1, arr2) {
     if (arr1.length === 0 || arr2.length === 0) return [];
 
-    let shorterArray, longerArray;
-    if (arr1.length <= arr2.length) {
-        shorterArray = arr1;
-        longerArray = arr2;
-    } else {
-        shorterArray = arr2;
-        longerArray = arr1;
-    }
+    const shorterArray = arr1.length <= arr2.length ? arr1 : arr2;
+    const longerArray = arr1.length > arr2.length ? arr1 : arr2;
 
     const setShorter = new Set(shorterArray);
-    const commonElements = [];
 
-    for (let i = 0; i < longerArray.length; i++) {
-        if (setShorter.has(longerArray[i])) {
-            commonElements.push(longerArray[i]);
-        }
-    }
-
-    return [...new Set(commonElements)];
+    return [...new Set(longerArray.filter(item => setShorter.has(item)))];
 }
+
 
 
 // 3. Bubble Sort (Author 3)
