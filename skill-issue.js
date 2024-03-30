@@ -45,15 +45,17 @@ function deepClone(obj) {
 }
 
 // 2. Find Common Elements Between Two Arrays (Author 2)
-function findCommonElements(arr1, arr2) {
+function findCommonElements(arr1, arr2, comparator = (a, b) => a === b) {
     if (arr1.length === 0 || arr2.length === 0) return [];
 
     const shorterArray = arr1.length <= arr2.length ? arr1 : arr2;
     const longerArray = arr1.length > arr2.length ? arr1 : arr2;
 
-    const setShorter = new Set(shorterArray);
+    const commonElements = longerArray.filter(item1 => 
+        shorterArray.some(item2 => comparator(item1, item2))
+    );
 
-    return [...new Set(longerArray.filter(item => setShorter.has(item)))];
+    return [...new Set(commonElements)];
 }
 
 
