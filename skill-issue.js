@@ -51,9 +51,12 @@ function findCommonElements(arr1, arr2, comparator = (a, b) => a === b) {
     const shorterArray = arr1.length <= arr2.length ? arr1 : arr2;
     const longerArray = arr1.length > arr2.length ? arr1 : arr2;
 
-    const commonElements = longerArray.filter(item1 => 
-        shorterArray.some(item2 => comparator(item1, item2))
-    );
+    const commonElements = longerArray.filter(item1 => {
+        for (let item2 of shorterArray) {
+            if (comparator(item1, item2)) return true;
+        }
+        return false;
+    });
 
     return [...new Set(commonElements)];
 }
